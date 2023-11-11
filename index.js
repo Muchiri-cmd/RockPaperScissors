@@ -19,15 +19,18 @@ function win(playerChoice,computerChoice){
     playerScore++;
     playerScore_Span.textContent=playerScore;
     computerScore_Span.textContent=computerScore;
-    result_p.textContent=`${playerChoice} beats ${computerChoice} You win!!! `
+    result_p.textContent=`[Player:${playerChoice}] beats [Computer:${computerChoice}]. You win!!! `
+    
 
 }
-function lose(){
-    //computerScore++;
-   // computerScore_Span.textContent=computerScore;
+function lose(playerChoice,computerChoice){
+    computerScore++;
+    playerScore_Span.textContent=playerScore;
+    computerScore_Span.textContent=computerScore;
+    result_p.textContent=`[Player:${playerChoice}] looses to [Computer:${computerChoice}]. You Loose!!! `
 }
-function draw(){
-
+function draw(playerChoice,computerChoice){
+    result_p.textContent=`[Player:${playerChoice}] draws [Computer:${computerChoice}]. Its a draw!!! `
 }
 function game(playerChoice){
     //console.log(`$playerChoice`);
