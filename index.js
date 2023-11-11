@@ -1,11 +1,11 @@
 "use strict";
 
-const playerScore=0;
-const computerScore=0;
+let playerScore=0;
+let computerScore=0;
 const playerScore_Span=document.getElementById("user-score");
 const computerScore_Span=document.getElementById("computer-score"); 
 const ccoreBoard_div=document.querySelector(".scoreboard");
-const result_div=document.querySelector(".result");
+const result_p=document.querySelector(".result > p");
 const rock_div=document.getElementById("rock");
 const paper_div=document.getElementById("paper");
 const scissors_div=document.getElementById("scissors");
@@ -15,9 +15,42 @@ function getComputerChoice(){
     let randomNumber=Math.floor(Math.random()*3);
     return choices[randomNumber]; 
 }
+function win(playerChoice,computerChoice){
+    playerScore++;
+    playerScore_Span.textContent=playerScore;
+    computerScore_Span.textContent=computerScore;
+    result_p.textContent=`${playerChoice} beats ${computerChoice} You win!!! `
 
+}
+function lose(){
+    //computerScore++;
+   // computerScore_Span.textContent=computerScore;
+}
+function draw(){
+
+}
 function game(playerChoice){
     //console.log(`$playerChoice`);
+    const computerChoice=getComputerChoice();
+    //cover all cases   
+    switch (playerChoice+computerChoice){
+        //user wins
+        case "paperrock":
+        case "scissorspaper":
+        case "rockscissors":
+           win(playerChoice,computerChoice);
+           break;
+        case "rockpaper":
+        case "paperscissors":
+        case "scissorsrock":
+            lose(playerChoice,computerChoice);
+            break;
+        case "rockrock":
+        case "paperpaper":
+        case "scissorsscissors":
+            draw(playerChoice,computerChoice);
+            break;
+    }
 }
 
 //main function
