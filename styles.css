@@ -64,13 +64,25 @@ img{
     padding:10px;
     margin:0px 10px;
     /*border:1px solid white;*/
-    transition: all 0.9s ease;
+    transition: all 0.5s ease;
    
 }
 .choice :hover{
     cursor: pointer;
     background:white;
 
+}
+.green-color{
+    background: #4dcc7d;
+    box-shadow: 0 0 5px #31b43a;
+}
+.red-color{
+    background: #fc121b;
+    box-shadow:0 0 5px #d01115;
+}
+.grey-color{
+    background:grey;
+    box-shadow: 0 0 5px #252926;
 }
 .choices{
     text-align:center;

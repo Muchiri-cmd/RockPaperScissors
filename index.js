@@ -4,7 +4,7 @@ let playerScore=0;
 let computerScore=0;
 const playerScore_Span=document.getElementById("user-score");
 const computerScore_Span=document.getElementById("computer-score"); 
-const ccoreBoard_div=document.querySelector(".scoreboard");
+const scoreBoard_div=document.querySelector(".scoreboard");
 const result_p=document.querySelector(".result > p");
 const rock_div=document.getElementById("rock");
 const paper_div=document.getElementById("paper");
@@ -20,17 +20,22 @@ function win(playerChoice,computerChoice){
     playerScore_Span.textContent=playerScore;
     computerScore_Span.textContent=computerScore;
     result_p.textContent=`[Player:${playerChoice}] beats [Computer:${computerChoice}]. You win!!! `
-    
-
+    document.getElementById(playerChoice).classList.add("green-color");
+    setTimeout(()=>{document.getElementById(playerChoice).classList.remove("green-color")},500)
 }
+
 function lose(playerChoice,computerChoice){
     computerScore++;
     playerScore_Span.textContent=playerScore;
     computerScore_Span.textContent=computerScore;
     result_p.textContent=`[Player:${playerChoice}] looses to [Computer:${computerChoice}]. You Loose!!! `
+    document.getElementById(playerChoice).classList.add("red-color");
+    setTimeout(()=>{document.getElementById(playerChoice).classList.remove("red-color")},500)
 }
 function draw(playerChoice,computerChoice){
     result_p.textContent=`[Player:${playerChoice}] draws [Computer:${computerChoice}]. Its a draw!!! `
+    document.getElementById(playerChoice).classList.add("grey-color");
+    setTimeout(()=>{document.getElementById(playerChoice).classList.remove("grey-color")},500)
 }
 function game(playerChoice){
     //console.log(`$playerChoice`);
@@ -65,7 +70,7 @@ function main(){
         game("paper");
     })
     scissors_div.addEventListener("click",()=>{
-        game("paper");
+        game("scissors");
     })
 }
 
