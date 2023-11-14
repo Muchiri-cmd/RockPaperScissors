@@ -2,6 +2,8 @@
 
 let playerScore=0;
 let computerScore=0;
+let roundsPlayed = 0;
+let gameRounds = 5; 
 const playerScore_Span=document.getElementById("user-score");
 const computerScore_Span=document.getElementById("computer-score"); 
 const scoreBoard_div=document.querySelector(".scoreboard");
@@ -37,27 +39,52 @@ function draw(playerChoice,computerChoice){
     document.getElementById(playerChoice).classList.add("grey-color");
     setTimeout(()=>{document.getElementById(playerChoice).classList.remove("grey-color")},500)
 }
+function playrounds(){
+    if (roundsPlayed<gameRounds){
+        return true;       
+    }
+        return false;
+}
+
+
+function playRounds(){
+    if(roundsPlayed < gameRounds){
+        return true;
+    }
+    return false;
+}
 function game(playerChoice){
-    //console.log(`$playerChoice`);
-    const computerChoice=getComputerChoice();
-    //cover all cases   
-    switch (playerChoice+computerChoice){
-        //user wins
-        case "paperrock":
-        case "scissorspaper":
-        case "rockscissors":
-           win(playerChoice,computerChoice);
-           break;
-        case "rockpaper":
-        case "paperscissors":
-        case "scissorsrock":
-            lose(playerChoice,computerChoice);
-            break;
-        case "rockrock":
-        case "paperpaper":
-        case "scissorsscissors":
-            draw(playerChoice,computerChoice);
-            break;
+        let flag=playRounds();
+        if (flag==true){//if rounds not complete run loop until defined no of rounds
+             //console.log(`$playerChoice`);
+            const computerChoice=getComputerChoice();
+            //cover all cases   
+            switch (playerChoice+computerChoice){
+                //user wins
+                case "paperrock":
+                case "scissorspaper":
+                case "rockscissors":
+                win(playerChoice,computerChoice);
+                break;
+                case "rockpaper":
+                case "paperscissors":
+                case "scissorsrock":
+                    lose(playerChoice,computerChoice);
+                    break;
+                case "rockrock":
+                case "paperpaper":
+                case "scissorsscissors":
+                    draw(playerChoice,computerChoice);
+                    break;
+            }   
+        }
+        finishGame();
+
+}
+function finishGame(){
+    roundsPlayed ++;
+    if (roundsPlayed==gameRounds){
+        console.log("Game Over");
     }
 }
 
@@ -73,5 +100,5 @@ function main(){
         game("scissors");
     })
 }
-
 main();
+

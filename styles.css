@@ -10,7 +10,7 @@ body{
 }
 
 header{
-    background:white;
+    background:lightblue;
     padding:20px;
 }
 header h1{
@@ -20,7 +20,7 @@ header h1{
 
 .score-board{
     border:3px solid white;
-    width:300px;
+    width:30%;
     margin:20px auto;
     font-size:45px;
     border-radius:2px;
