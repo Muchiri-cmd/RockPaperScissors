@@ -3,7 +3,7 @@
 let playerScore=0;
 let computerScore=0;
 let roundsPlayed = 0;
-let gameRounds = 5; 
+let gameRounds = 6; 
 const playerScore_Span=document.getElementById("user-score");
 const computerScore_Span=document.getElementById("computer-score"); 
 const scoreBoard_div=document.querySelector(".scoreboard");
@@ -17,6 +17,7 @@ function getComputerChoice(){
     let randomNumber=Math.floor(Math.random()*3);
     return choices[randomNumber]; 
 }
+
 function win(playerChoice,computerChoice){
     playerScore++;
     playerScore_Span.textContent=playerScore;
@@ -34,28 +35,15 @@ function lose(playerChoice,computerChoice){
     document.getElementById(playerChoice).classList.add("red-color");
     setTimeout(()=>{document.getElementById(playerChoice).classList.remove("red-color")},500)
 }
+
 function draw(playerChoice,computerChoice){
     result_p.textContent=`[Player:${playerChoice}] draws [Computer:${computerChoice}]. Its a draw!!! `
     document.getElementById(playerChoice).classList.add("grey-color");
     setTimeout(()=>{document.getElementById(playerChoice).classList.remove("grey-color")},500)
 }
-function playrounds(){
-    if (roundsPlayed<gameRounds){
-        return true;       
-    }
-        return false;
-}
 
-
-function playRounds(){
-    if(roundsPlayed < gameRounds){
-        return true;
-    }
-    return false;
-}
 function game(playerChoice){
-        let flag=playRounds();
-        if (flag==true){//if rounds not complete run loop until defined no of rounds
+        if (roundsPlayed<gameRounds){
              //console.log(`$playerChoice`);
             const computerChoice=getComputerChoice();
             //cover all cases   
@@ -78,13 +66,22 @@ function game(playerChoice){
                     break;
             }   
         }
-        finishGame();
-
+        endGame();
 }
-function finishGame(){
+
+function endGame(){
     roundsPlayed ++;
     if (roundsPlayed==gameRounds){
-        console.log("Game Over");
+        result_p.textContent=`Game Over!!`
+        
+        if (playerScore>computerScore){
+            result_p.textContent+=` You win.`
+        }else if(playerScore==computerScore){
+            result_p.textContent+=` Its a draw.`
+        }
+        else{
+            result_p.textContent+=` You Loose.`
+        }
     }
 }
 
