@@ -3,7 +3,7 @@
 let playerScore=0;
 let computerScore=0;
 let roundsPlayed = 0;
-let gameRounds = 6; 
+let gameRounds = 5; 
 const playerScore_Span=document.getElementById("user-score");
 const computerScore_Span=document.getElementById("computer-score"); 
 const scoreBoard_div=document.querySelector(".scoreboard");
