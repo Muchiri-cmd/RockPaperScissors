@@ -5,8 +5,9 @@
 }
 
 body{
-    background:#24272E;
-    color:white;
+    background:#f8fafc;
+    color:#030712;
+    min-width:300px;
 }
 
 header{
@@ -17,9 +18,7 @@ header h1{
     color:black;
     text-align:center;
 }
-
 .score-board{
-    border:3px solid white;
     width:30%;
     margin:20px auto;
     font-size:45px;
@@ -63,9 +62,9 @@ img{
     display: inline-block;
     padding:10px;
     margin:0px 10px;
-    /*border:1px solid white;*/
+    border:1px solid whitesmoke;
+    border-radius:1em;
     transition: all 0.5s ease;
-   
 }
 .choice :hover{
     cursor: pointer;
@@ -86,10 +85,33 @@ img{
 }
 .choices{
     text-align:center;
-    margin:30px;
+    margin:1rem;
 }
 #action-message{
     text-align:center;
     font-weight:700px;
     font-size:20px;
+}
+@media screen and (max-width:810px){
+    .score-board{
+        font-size:2rem;
+    }
+    #user-label,#computer-label{
+        position: relative;
+    }
+    #user-score,#computer-score{
+        display: inline-block;
+    }
+}
+@media screen and (max-width:650px) {
+    .result{
+        font-size:1.5rem; 
+    }
+    img{
+        height:8rem;
+        width:8rem;
+    }
+    .choice{
+        margin:.5rem;
+    }
 }
